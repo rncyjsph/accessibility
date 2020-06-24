@@ -1,0 +1,143 @@
+[
+  {
+    "comments": [
+      {
+        "line": 1,
+        "value": "#@tag"
+      }
+    ],
+    "line": 2,
+    "elements": [
+      {
+        "line": 5,
+        "name": "Successful user login with valid credentials",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 6,
+            "name": "User is on login page",
+            "match": {
+              "location": "AllProjectsSteps.user_is_on_login_page()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 7,
+            "name": "user verifies Login page title",
+            "match": {
+              "location": "AllProjectsSteps.user_verifies_Login_page_title()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 8,
+            "name": "user verify text on the page",
+            "match": {
+              "location": "AllProjectsSteps.user_verify_text_on_the_page()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 9,
+            "name": "user types in emailaddress and password",
+            "match": {
+              "location": "AllProjectsSteps.user_types_in_emailaddress_and_password()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "skipped"
+            },
+            "line": 10,
+            "name": "user is navigated to project page",
+            "match": {
+              "location": "AllProjectsSteps.user_is_navigated_to_project_page()"
+            },
+            "keyword": "Then "
+          }
+        ]
+      },
+      {
+        "line": 25,
+        "name": "File upload in source folder",
+        "description": "",
+        "id": "file-validation-in-source-folder-in-adh-application;file-upload-in-source-folder",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 26,
+            "name": "user clicks on Add Files icon",
+            "match": {},
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 27,
+            "name": "user enters the file path onto the file-selection input field",
+            "match": {},
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 28,
+            "name": "user click the open button",
+            "match": {},
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 29,
+            "name": "user verify the View file button is generated",
+            "match": {},
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "status": "undefined"
+            },
+            "line": 30,
+            "name": "user verfiy the file count under source folder",
+            "match": {},
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "line": 24,
+            "name": "@AddFiles"
+          }
+        ]
+      }
+    ],
+    "name": "File validation in Source folder in ADH application",
+    "description": "",
+    "id": "file-validation-in-source-folder-in-adh-application",
+    "keyword": "Feature",
+    "uri": "D:/ADH_Workspace/codemantra.ADH/src/test/java/codemantra/ADH/feature/filerepository.feature"
+  }
+]
