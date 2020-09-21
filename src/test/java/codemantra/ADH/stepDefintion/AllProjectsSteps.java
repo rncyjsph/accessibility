@@ -1,4 +1,4 @@
-package codemantra.ADH.stepDefintion;
+/*package codemantra.ADH.stepDefintion;
 
 import java.util.concurrent.TimeUnit;
 
@@ -120,9 +120,9 @@ public class AllProjectsSteps extends BaseClass {
 	@When("^user selects \"([^\"]*)\" asset$")
 	public void user_selects_asset(String assets) throws Throwable {
 		addprojobj.clickRadiobtn(assets);
-	   /*String expectedAsset1="MathML";
-	   String[] actualAsset=addprojobj.displayradiolabels();
-		Assert.assertEquals(expectedAsset1, actualAsset[1]);*/
+	   String expectedAsset1="MathML";
+	  
+		//Assert.assertEquals(expectedAsset1, actualAsset[1]);
 		
 	    
 	}
@@ -147,7 +147,7 @@ public class AllProjectsSteps extends BaseClass {
 
 	
 
-	/*@Then("^user returns to All Projects page$")
+	@Then("^user returns to All Projects page$")
 	public void user_returns_to_All_Projects_page() throws Throwable {
 		
 		String projectsText = allprojectsobj.projectsPageDisplayText();
@@ -155,7 +155,8 @@ public class AllProjectsSteps extends BaseClass {
 		Assert.assertEquals(projectexpectedText, projectsText);
 		System.out.println(projectsText);
 	    
-	}*/
+	}
 
 
 }
+*/

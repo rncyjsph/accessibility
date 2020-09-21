@@ -1,15 +1,9 @@
 [
   {
-    "comments": [
-      {
-        "line": 1,
-        "value": "#@tag"
-      }
-    ],
     "line": 2,
     "elements": [
       {
-        "line": 5,
+        "line": 4,
         "name": "Successful user login with valid credentials",
         "description": "",
         "type": "background",
@@ -17,119 +11,120 @@
         "steps": [
           {
             "result": {
-              "status": "skipped"
+              "duration": 27793282600,
+              "status": "passed"
             },
-            "line": 6,
+            "line": 5,
             "name": "User is on login page",
             "match": {
-              "location": "AllProjectsSteps.user_is_on_login_page()"
+              "location": "FileRepoSteps.user_is_on_login_page()"
             },
             "keyword": "Given "
           },
           {
             "result": {
-              "status": "skipped"
+              "duration": 11781500,
+              "status": "passed"
             },
-            "line": 7,
+            "line": 6,
             "name": "user verifies Login page title",
             "match": {
-              "location": "AllProjectsSteps.user_verifies_Login_page_title()"
+              "location": "FileRepoSteps.user_verifies_Login_page_title()"
             },
             "keyword": "And "
           },
           {
             "result": {
-              "status": "skipped"
+              "duration": 2059340700,
+              "status": "passed"
             },
-            "line": 8,
+            "line": 7,
             "name": "user verify text on the page",
             "match": {
-              "location": "AllProjectsSteps.user_verify_text_on_the_page()"
+              "location": "FileRepoSteps.user_verify_text_on_the_page()"
             },
             "keyword": "And "
           },
           {
             "result": {
-              "status": "skipped"
+              "duration": 1433535400,
+              "status": "passed"
             },
-            "line": 9,
+            "line": 8,
             "name": "user types in emailaddress and password",
             "match": {
-              "location": "AllProjectsSteps.user_types_in_emailaddress_and_password()"
+              "location": "FileRepoSteps.user_types_in_emailaddress_and_password()"
             },
             "keyword": "When "
           },
           {
             "result": {
-              "status": "skipped"
+              "duration": 9786028400,
+              "status": "passed"
             },
-            "line": 10,
+            "line": 9,
             "name": "user is navigated to project page",
             "match": {
-              "location": "AllProjectsSteps.user_is_navigated_to_project_page()"
+              "location": "FileRepoSteps.user_is_navigated_to_project_page()"
             },
             "keyword": "Then "
           }
         ]
       },
       {
-        "line": 25,
-        "name": "File upload in source folder",
+        "line": 52,
+        "name": "File upload in existing project",
         "description": "",
-        "id": "file-validation-in-source-folder-in-adh-application;file-upload-in-source-folder",
+        "id": "file-validation-in-source-folder-in-adh-application;file-upload-in-existing-project;;2",
         "type": "scenario",
-        "keyword": "Scenario",
+        "keyword": "Scenario Outline",
         "steps": [
           {
             "result": {
-              "status": "undefined"
+              "duration": 20576190700,
+              "status": "passed"
             },
-            "line": 26,
-            "name": "user clicks on Add Files icon",
-            "match": {},
+            "line": 45,
+            "name": "user search for required \"AutoScript\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "AutoScript",
+                  "offset": 26
+                }
+              ],
+              "location": "FileRepoSteps.user_search_for_required(String)"
+            },
             "keyword": "When "
           },
           {
             "result": {
-              "status": "undefined"
+              "duration": 24835061500,
+              "status": "passed"
             },
-            "line": 27,
-            "name": "user enters the file path onto the file-selection input field",
-            "match": {},
+            "line": 46,
+            "name": "user uploads files and verifies the file count in source folder",
+            "match": {
+              "location": "FileRepoSteps.user_uploads_files_and_verifies_the_file_count_in_source_folder()"
+            },
             "keyword": "Then "
           },
           {
             "result": {
-              "status": "undefined"
+              "duration": 643005821300,
+              "status": "passed"
             },
-            "line": 28,
-            "name": "user click the open button",
-            "match": {},
-            "keyword": "And "
-          },
-          {
-            "result": {
-              "status": "undefined"
+            "line": 47,
+            "name": "user validates the generated view file and generated notification",
+            "match": {
+              "location": "FileRepoSteps.user_verifies_the_generated_view_file_and_generated_notification()"
             },
-            "line": 29,
-            "name": "user verify the View file button is generated",
-            "match": {},
-            "keyword": "Then "
-          },
-          {
-            "result": {
-              "status": "undefined"
-            },
-            "line": 30,
-            "name": "user verfiy the file count under source folder",
-            "match": {},
             "keyword": "And "
           }
         ],
         "tags": [
           {
-            "line": 24,
-            "name": "@AddFiles"
+            "name": "@AddFilesOnSearchProject"
           }
         ]
       }
@@ -138,6 +133,7 @@
     "description": "",
     "id": "file-validation-in-source-folder-in-adh-application",
     "keyword": "Feature",
-    "uri": "D:/ADH_Workspace/codemantra.ADH/src/test/java/codemantra/ADH/feature/filerepository.feature"
+    "uri": "src/test/resources/codemantra/ADH/feature/filerepository.feature",
+    "tags": []
   }
 ]

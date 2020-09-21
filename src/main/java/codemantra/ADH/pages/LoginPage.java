@@ -1,5 +1,7 @@
 package codemantra.ADH.pages;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -36,6 +38,7 @@ public class LoginPage extends BaseClass {
 	// Actions
 
 	public AllProjectsPage login(String username, String pwd) throws InterruptedException {
+		driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
 		
 		emailAddress.sendKeys(username);
 		Thread.sleep(500);
