@@ -249,7 +249,7 @@ public class FileRepoSteps extends BaseClass {
 					//WebElement source_next = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='nxt']")));
 					WebDriverWait s=new WebDriverWait(driver,60);
 					WebElement source_next = s.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//i[@class='glyphicon glyphicon-forward']")));
-					Thread.sleep(500);;
+					Thread.sleep(500);
 					action.moveToElement(source_next).perform();
 
 					Thread.sleep(5000);
@@ -325,8 +325,8 @@ public class FileRepoSteps extends BaseClass {
 		}
 
 		driver.switchTo().window(parentWindow);
-		driver.navigate().refresh();
-		driver.manage().timeouts().pageLoadTimeout(TestUtil.PageLoadTimeOut, TimeUnit.SECONDS);
+		//driver.navigate().refresh();
+		//driver.manage().timeouts().pageLoadTimeout(TestUtil.PageLoadTimeOut, TimeUnit.SECONDS);
 		Thread.sleep(5000);
 
 		// Alttext
@@ -342,6 +342,8 @@ public class FileRepoSteps extends BaseClass {
 				driver.switchTo().window(alttexthandle);
 				driver.manage().timeouts().pageLoadTimeout(TestUtil.PageLoadTimeOut, TimeUnit.SECONDS);
 				Thread.sleep(5000);
+				String a_viewlink = driver.getCurrentUrl();
+				System.out.println("Alt text folder URL :" + a_viewlink);
 				//Zoom.std();
 
 				WebElement alttext = wait
@@ -383,7 +385,7 @@ public class FileRepoSteps extends BaseClass {
 					Thread.sleep(1000);
 					((JavascriptExecutor) driver).executeScript("arguments[0].click();", fwd);
 
-					System.out.println("Next button  is clicked");
+					
 					driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 					Thread.sleep(1000);
 
@@ -433,6 +435,7 @@ public class FileRepoSteps extends BaseClass {
 		driver.navigate().refresh();
 
 		driver.manage().timeouts().pageLoadTimeout(900, TimeUnit.SECONDS);
+		Thread.sleep(10000);
 
 		filerepoobj.click_Process();
 
@@ -447,6 +450,8 @@ public class FileRepoSteps extends BaseClass {
 
 				driver.switchTo().window(handle);
 				Thread.sleep(1000);
+				String p_viewlink = driver.getCurrentUrl();
+				System.out.println("Process folder element viewer URL :" + p_viewlink);
 				Zoom.std();
 				ProcessElementViewerPage ob = new ProcessElementViewerPage();
 				Thread.sleep(5000);
@@ -702,9 +707,9 @@ wait.until(ExpectedConditions.visibilityOfAllElements(l));
 
 		driver.switchTo().window(parentWindow);
 		driver.navigate().refresh();
-		driver.manage().timeouts().pageLoadTimeout(500, TimeUnit.SECONDS);
-		Thread.sleep(1000);
-		addprojobj.scrolldown();
+		//driver.manage().timeouts().pageLoadTimeout(500, TimeUnit.SECONDS);
+		//Thread.sleep(1000);
+		//addprojobj.scrolldown();
 
 		Thread.sleep(6000);
 		filerepoobj.click_QA();

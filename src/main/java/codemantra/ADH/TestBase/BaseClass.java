@@ -39,22 +39,22 @@ public class BaseClass {
 	}
 		
 		
-		public static void initialization()
+		public static void initialization() throws ClassNotFoundException
 		{
 			String browsername=prop.getProperty("browser");
 			//ChromeOptions options = new ChromeOptions();
 			
 			if (browsername.equals("chrome"))
 			{
-				String os=System.getProperty("os.name").toLowerCase();
-				ChromeOptions options = new ChromeOptions();
-				if(os.contains("linux"))
-				{
-					System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver");
-					options.setBinary("/usr/bin/google-chrome");
+				//String os=System.getProperty("os.name").toLowerCase();
+				//ChromeOptions options = new ChromeOptions();
+				//if(os.contains("linux"))
+				//{
+				//	System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver");
+					//options.setBinary("/usr/bin/google-chrome");
 					
-					options.addArguments("window-size=1400,800");
-					options.addArguments("--headless");
+					//options.addArguments("window-size=1400,800");
+					//options.addArguments("--headless");
 					
 					//options.addArguments("--headless");
 					//options.setHeadless(true);
@@ -62,37 +62,39 @@ public class BaseClass {
 					//final DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 					//desiredCapabilities.setCapability(ChromeOptions.CAPABILITY, options);
 					
+				//System.setProperty("webdriver.chrome.driver","chromedriver_win32/chromedriver.exe");
 					
+				String path = System.getProperty("user.dir");
+				
+				String driverPath = path + "\\chromedriver_win32\\chromedriver.exe";
+					System.setProperty("webdriver.chrome.driver",driverPath);
+					//driver=new ChromeDriver();
 					
-				}
-				else
-				{
-					System.setProperty("webdriver.chrome.driver","chromedriver_win32/chromedriver.exe");
-				}
-				
-				//System.setProperty("webdriver.chrome.driver","src/main/java/codemantra/ADH/chromedriver_win32/chromedriver.exe");
-				//System.setProperty("webdriver.chrome.driver","src/test/resources/codemantra/ADH/chromedriver_win32/chromedriver.exe");
-				//ChromeOptions options = new ChromeOptions();
-				Map<String, Object> prefs = new HashMap<String, Object>();
-				prefs.put("profile.default_content_settings.popups", 0);
-				//prefs.put("download.default_directory", "D:\\Project\\qaoutput");
-				prefs.put("download.default_directory","target/qaoutput");
-				
-				options.setExperimentalOption("prefs", prefs);
-				
+					//Map<String, Object> prefs = new HashMap<String, Object>();
+					HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+					chromePrefs.put("profile.default_content_settings.popups", 0);
+					
+					//prefs.put("download.default_directory", "D:\\Project\\qaoutput");
+					String downloadpath=path + "\\src\\test\\resources\\downloads";
+					System.out.println("The path where files are downloaded from QA folder :" + downloadpath);
+					chromePrefs.put("download.default_directory", downloadpath);
+					ChromeOptions options = new ChromeOptions();
+					
+					options.setExperimentalOption("prefs", chromePrefs);
+					
 
-				 driver = new ChromeDriver(options);
+					 driver = new ChromeDriver(options);
+					
+				}
 				
 				
+								
+								
 				
-				
-				
-				//driver=new ChromeDriver();
-			}
 			
-			else
+			
+			else if (browsername.equals("IE"))
 				
-				if (browsername.equals("IE"))
 				{
 					System.setProperty("webdriver.ie.driver","driverpath_IE");
 					driver = new InternetExplorerDriver();
@@ -109,3 +111,4 @@ public class BaseClass {
 	}
 	
 }
+

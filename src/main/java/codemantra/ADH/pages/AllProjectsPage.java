@@ -188,7 +188,7 @@ public class AllProjectsPage extends BaseClass{
 try {
 			WebDriverWait tablewait = new WebDriverWait(driver, 20000);
 			tablewait.until(ExpectedConditions.visibilityOfAllElements(rowvalue));
-
+//Thread.sleep(2000);
 
 			int row=rows.size();
 			
@@ -197,7 +197,8 @@ try {
 				if(rowvalue.get(i).getText().equalsIgnoreCase(proj))
 				{
 					flag=true;
-					tablewait.until(ExpectedConditions.elementToBeClickable(rowvalue.get(i)));
+					//tablewait.until(ExpectedConditions.elementToBeClickable(rowvalue.get(i)));
+					tablewait.until(ExpectedConditions.visibilityOf(rowvalue.get(i)));
 					Actions action=new Actions(driver);
 					action.moveToElement(rowvalue.get(i)).perform();
 					Thread.sleep(1000);
