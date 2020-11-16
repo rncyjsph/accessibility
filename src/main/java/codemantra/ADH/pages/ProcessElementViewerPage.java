@@ -71,27 +71,28 @@ public class ProcessElementViewerPage extends BaseClass {
 	WebElement modalcontent;
 
 	@FindBy(xpath = "//button[@id='modal-btn-si']")
-	 WebElement ignore_yes;
+	WebElement ignore_yes;
+	@FindBy(xpath = "//div[@class='elementx']")
+	List<WebElement> l;
 
 	public ProcessElementViewerPage() {
 		PageFactory.initElements(driver, this);
 	}
 
-	
 	public void shortCutKeys() throws InterruptedException {
 		Actions action = new Actions(driver);
 
-		//action.moveToElement(clearorder).perform();
+		// action.moveToElement(clearorder).perform();
 		Thread.sleep(1000);
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", clearorder);
-		
+
 		Thread.sleep(1000);
 
-		//action.moveToElement(yes).build().perform();
+		// action.moveToElement(yes).build().perform();
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", yes);
-		
+
 		// }
-		//orders should be removed
+		// orders should be removed
 		if (!reorder.isDisplayed()) {
 			Assert.assertTrue(true);
 		}
@@ -102,7 +103,7 @@ public class ProcessElementViewerPage extends BaseClass {
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", help);
 		Thread.sleep(2000);
 
-		action.dragAndDropBy(helpmodalbox, 900, 10).build().perform();
+		action.dragAndDropBy(helpmodalbox, 960, 10).build().perform();
 		String expected_h = helpshortcut.getText();
 		String actual_h = "Help - Shortcuts";
 		Assert.assertEquals("Validation of shortcut keys", expected_h, actual_h);
@@ -113,7 +114,7 @@ public class ProcessElementViewerPage extends BaseClass {
 		action.keyDown(Keys.CONTROL).keyDown(Keys.SHIFT).sendKeys("A").keyUp(Keys.CONTROL).keyUp(Keys.SHIFT).build()
 				.perform();
 		System.out.println("Zones are reordered by pressing Shortcut key CTRL+SHIFT+A");
-//orders should be displayed
+		// orders should be displayed
 		if (reorder.isDisplayed()) {
 			Assert.assertTrue(true);
 		}
@@ -185,37 +186,35 @@ public class ProcessElementViewerPage extends BaseClass {
 
 		// Approve Button
 
-		
 		action.keyDown(Keys.CONTROL).keyDown(Keys.ALT).sendKeys("A").build().perform();
-		
+
 		action.keyUp(Keys.CONTROL).keyUp(Keys.ALT).build().perform();
-	
-		 Thread.sleep(2000);
+
+		Thread.sleep(2000);
 		// action.moveToElement(ignore_yes).build().perform();
-		 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", ignore_yes);
-		//ignore_yes.click();
-		
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", ignore_yes);
+		// ignore_yes.click();
 
 		wait.until(ExpectedConditions.elementToBeClickable(approvecancel));
-		 Thread.sleep(2000);
+		Thread.sleep(2000);
 		// action.moveToElement(approvecancel).build().perform();
-		 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", approvecancel);
-		 
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", approvecancel);
 
 		System.out.println("Approve shortcut key is performed by pressing keys CTRL+Alt+ A");
 		Thread.sleep(5000);
-		
+
 		// shortcut keys for move box up , down,left ,right
 
 		try {
-			List<WebElement> l = driver.findElements(By.xpath("//div[@class='elementx']"));
+
 			// Actions action = new Actions(driver);
+
 			int no_of_elements = l.size();
 			System.out.println("Number of elements found on current page is  " + no_of_elements);
 			for (int e = 0; e < no_of_elements; e++) {
 				// String element = l.get(e).getText();
 				if (e == 3) {
-					//clone zone
+					// clone zone
 					String element = l.get(e).getText();
 					if (element.equalsIgnoreCase("Figure") || (element.equalsIgnoreCase("Table"))
 							|| (element.equalsIgnoreCase("Formula"))) {
@@ -231,14 +230,14 @@ public class ProcessElementViewerPage extends BaseClass {
 						System.out.println("The alert message is :" + alert.getText());
 						Thread.sleep(1000);
 						alert.accept();
-						
 
 					} else {
 						((JavascriptExecutor) driver).executeScript("arguments[0].click();", l.get(e));
 
 						action.keyDown(Keys.CONTROL).sendKeys("B").perform();
 						action.keyUp(Keys.CONTROL);
-						action.dragAndDropBy(l.get(e), 55, 10).build().perform();
+						((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", l.get(e));
+						// action.dragAndDropBy(l.get(e), 55, 10).build().perform();
 						System.out.println(element + " is cloned");
 						Thread.sleep(1000);
 
@@ -250,52 +249,47 @@ public class ProcessElementViewerPage extends BaseClass {
 					String element = l.get(e).getText();
 					((JavascriptExecutor) driver).executeScript("arguments[0].click();", l.get(e));
 					// shortcut key to move box left
-					for (int p = 0; p <= 5; p++) {
+					for (int p = 0; p <= 3; p++) {
 
 						action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.ALT)
-								.sendKeys(l.get(e), Keys.ARROW_LEFT).pause(Duration.ofSeconds(2)).build()
-								.perform();
+								.sendKeys(l.get(e), Keys.ARROW_LEFT).pause(Duration.ofSeconds(2)).build().perform();
 
 					}
 					System.out.println(element + " is moved left by pressing keys CTRL+Alt+ Left Arrow");
 					Thread.sleep(1000);
 					// shortcut key to move box right
-					for (int p = 0; p <= 5; p++) {
+					for (int p = 0; p <= 3; p++) {
 
 						action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.ALT)
-								.sendKeys(l.get(e), Keys.ARROW_RIGHT).pause(Duration.ofSeconds(2)).build()
-								.perform();
+								.sendKeys(l.get(e), Keys.ARROW_RIGHT).pause(Duration.ofSeconds(2)).build().perform();
 
 					}
 					System.out.println(element + " is moved right by pressing keys CTRL+Alt+ Right Arrow");
 					Thread.sleep(1000);
 					// shortcut key to move box up
-					for (int p = 0; p <= 5; p++) {
+					for (int p = 0; p <= 3; p++) {
 
 						action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.ALT)
-								.sendKeys(l.get(e), Keys.ARROW_UP).pause(Duration.ofSeconds(2)).build()
-								.perform();
+								.sendKeys(l.get(e), Keys.ARROW_UP).pause(Duration.ofSeconds(2)).build().perform();
 
 					}
 					System.out.println(element + " is moved up by pressing keys CTRL+Alt+ Up Arrow");
 					Thread.sleep(1000);
 					// shortcut key to move box down
-					for (int p = 0; p <= 5; p++) {
+					for (int p = 0; p <= 3; p++) {
 
 						action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.ALT)
-								.sendKeys(l.get(e), Keys.ARROW_DOWN).pause(Duration.ofSeconds(2)).build()
-								.perform();
+								.sendKeys(l.get(e), Keys.ARROW_DOWN).pause(Duration.ofSeconds(2)).build().perform();
 
 					}
 					System.out.println(element + " is moved down by pressing keys CTRL+Alt+ DOWN Arrow");
 					Thread.sleep(1000);
 
 					// shortcut key to shrink right side of box
-					for (int p = 0; p <= 5; p++) {
+					for (int p = 0; p <= 3; p++) {
 
 						action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.SHIFT)
-								.sendKeys(l.get(e), Keys.ARROW_LEFT).pause(Duration.ofSeconds(2)).build()
-								.perform();
+								.sendKeys(l.get(e), Keys.ARROW_LEFT).pause(Duration.ofSeconds(2)).build().perform();
 
 					}
 					System.out.println(
@@ -304,11 +298,10 @@ public class ProcessElementViewerPage extends BaseClass {
 					Thread.sleep(1000);
 
 					// shortcut key to expand right side of box
-					for (int p = 0; p <= 5; p++) {
+					for (int p = 0; p <= 3; p++) {
 
 						action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.SHIFT)
-								.sendKeys(l.get(e), Keys.ARROW_RIGHT).pause(Duration.ofSeconds(2)).build()
-								.perform();
+								.sendKeys(l.get(e), Keys.ARROW_RIGHT).pause(Duration.ofSeconds(2)).build().perform();
 
 					}
 					System.out.println(
@@ -316,11 +309,10 @@ public class ProcessElementViewerPage extends BaseClass {
 									+ element);
 					Thread.sleep(1000);
 					// shortcut key to shrink bottom side of box
-					for (int p = 0; p <= 5; p++) {
+					for (int p = 0; p <= 3; p++) {
 
 						action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.SHIFT)
-								.sendKeys(l.get(e), Keys.ARROW_UP).pause(Duration.ofSeconds(2)).build()
-								.perform();
+								.sendKeys(l.get(e), Keys.ARROW_UP).pause(Duration.ofSeconds(2)).build().perform();
 
 					}
 					System.out.println(
@@ -329,65 +321,90 @@ public class ProcessElementViewerPage extends BaseClass {
 					Thread.sleep(1000);
 
 					// shortcut key to expand bottom side of box
-					for (int p = 0; p <= 5; p++) {
+					for (int p = 0; p <= 3; p++) {
 
 						action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.SHIFT)
-								.sendKeys(l.get(e), Keys.ARROW_DOWN).pause(Duration.ofSeconds(2)).build()
-								.perform();
+								.sendKeys(l.get(e), Keys.ARROW_DOWN).pause(Duration.ofSeconds(2)).build().perform();
 
 					}
 					System.out.println(
-							"shortcut key (CTRL+SHIFT+ Down Arrow)is pressed to expand bottom side zoned  element "
+							"shortcut key (CTRL+SHIFT+ Down Arrow)is pressed to expand bottom side of zoned  element "
 									+ element);
+				
 					Thread.sleep(1000);
 
-				
+					// delete
+					if (e == 3) {
+						// String element = l.get(e).getText();
+						if (element.equalsIgnoreCase("Figure") || (element.equalsIgnoreCase("Table"))
+								|| (element.equalsIgnoreCase("Formula"))) {
 
-				// delete
-				if (e == 3) {
-					//String element = l.get(e).getText();
-					if (element.equalsIgnoreCase("Figure") || (element.equalsIgnoreCase("Table"))
-							|| (element.equalsIgnoreCase("Formula"))) {
+							((JavascriptExecutor) driver).executeScript("arguments[0].click();", l.get(e));
+							Thread.sleep(1000);
 
-						((JavascriptExecutor) driver).executeScript("arguments[0].click();", l.get(e));
-						Thread.sleep(1000);
+							action.sendKeys(Keys.DELETE).build().perform();
+							// action.keyUp(Keys.DELETE).build().perform();
 
-						action.sendKeys(Keys.DELETE).build().perform();
-						// action.keyUp(Keys.DELETE).build().perform();
+							Alert alert = driver.switchTo().alert();
+							Thread.sleep(1000);
+							System.out.println("The alert message is :" + alert.getText());
+							Thread.sleep(1000);
+							alert.accept();
 
-						Alert alert = driver.switchTo().alert();
-						Thread.sleep(1000);
-						System.out.println("The alert message is :" + alert.getText());
-						Thread.sleep(1000);
-						alert.accept();
-						
+						}
+						if (element.equalsIgnoreCase("P")) {
+							// else {
+							((JavascriptExecutor) driver).executeScript("arguments[0].click();", l.get(e));
+							action.sendKeys(Keys.DELETE).build().perform();
 
-					}
-					if (element.equalsIgnoreCase("P")) {
-						// else {
-						((JavascriptExecutor) driver).executeScript("arguments[0].click();", l.get(e));
-						action.sendKeys(Keys.DELETE).build().perform();
+							System.out.println("Prediction on "+ element + " is deleted");
 
-						System.out.println(element + " is removed");
+						}
 
 					}
 				}
 
-				// break;
 			}
 
-		}
+			for (int g = 0; g < no_of_elements; g++) {
+				if (g == 0 && !l.get(g).isSelected()) {
+					String ele1 = l.get(g).getText();
+					// action.keyDown(Keys.LEFT_CONTROL).pause(Duration.ofSeconds(2))
+					action.keyDown(Keys.LEFT_CONTROL).click(l.get(g)).pause(Duration.ofSeconds(2)).perform();
+					// .keyUp(Keys.LEFT_CONTROL).perform();
+					System.out.println("1st element selected to be merged is " + ele1);
+				}
+
+				for (int f = 0; f < no_of_elements; f++) {
+
+					if (f == 1 && !l.get(f).isSelected()) {
+						String ele2 = l.get(f).getText();
+						action.keyDown(Keys.LEFT_CONTROL).click(l.get(f)).pause(Duration.ofSeconds(2)).perform();
+						// .keyUp(Keys.LEFT_CONTROL).perform();
+
+						System.out.println("2nd element selected to be merged is " + ele2);
+						break;
+					}
+
+				}
+				break;
+			}
+			action.keyDown(Keys.CONTROL).sendKeys("M").pause(Duration.ofSeconds(2)).keyUp(Keys.CONTROL).perform();
+			System.out.println("both elements are merged");
+
 		}
 
 		catch (NoSuchElementException e) {
 			System.out.println("Unable to locate element");
 		}
+		
+	catch(org.openqa.selenium.interactions.MoveTargetOutOfBoundsException m)
+	{
+		
+	}
 
-	
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", helpclose);
 
+	}}
+
 	
-		}
-		}
-
-

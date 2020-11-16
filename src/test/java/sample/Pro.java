@@ -140,179 +140,186 @@ public class Pro extends BaseClass {
 
 				Thread.sleep(5000);
 
+				// try {
+				// List<WebElement> l =
+				// driver.findElements(By.xpath("//div[@class='elementx']"));
+				// // Actions action = new Actions(driver);
+				// int no_of_elements = l.size();
+				// System.out.println("Number of elements found on current page is " +
+				// no_of_elements);
+				// for (int e = 0; e < no_of_elements; e++)
+				// {
+				// String element =
+
+				/*
+				 * * l.get(e).getText(); if (e == 3) { //clone zone String element =
+				 * l.get(e).getText(); if (element.equalsIgnoreCase("Figure") ||
+				 * (element.equalsIgnoreCase("Table")) || (element.equalsIgnoreCase("Formula")))
+				 * {
+				 * 
+				 * ((JavascriptExecutor) driver).executeScript("arguments[0].click();",
+				 * l.get(e)); Thread.sleep(1000);
+				 * action.keyDown(Keys.CONTROL).sendKeys("B").perform();
+				 * action.keyUp(Keys.CONTROL); Thread.sleep(2000);
+				 * 
+				 * Alert alert = driver.switchTo().alert();
+				 * 
+				 * System.out.println("The alert message is :" + alert.getText());
+				 * Thread.sleep(1000); alert.accept();
+				 * 
+				 * 
+				 * } else { ((JavascriptExecutor) driver).executeScript("arguments[0].click();",
+				 * l.get(e));
+				 * 
+				 * action.keyDown(Keys.CONTROL).sendKeys("B").perform();
+				 * action.keyUp(Keys.CONTROL); action.dragAndDropBy(l.get(e), 55,
+				 * 10).build().perform(); System.out.println(element + " is cloned");
+				 * Thread.sleep(1000);
+				 * 
+				 * }
+				 * 
+				 * }
+				 * 
+				 * if (e == 3) { String element = l.get(e).getText(); ((JavascriptExecutor)
+				 * driver).executeScript("arguments[0].click();", l.get(e)); // shortcut key to
+				 * move box left for (int p = 0; p <= 5; p++) {
+				 * 
+				 * action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.ALT)
+				 * .sendKeys(l.get(e), Keys.ARROW_LEFT).pause(Duration.ofSeconds(2)).build()
+				 * .perform();
+				 * 
+				 * } System.out.println(element +
+				 * " is moved left by pressing keys CTRL+Alt+ Left Arrow"); Thread.sleep(1000);
+				 * // shortcut key to move box right for (int p = 0; p <= 5; p++) {
+				 * 
+				 * action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.ALT)
+				 * .sendKeys(l.get(e), Keys.ARROW_RIGHT).pause(Duration.ofSeconds(2)).build()
+				 * .perform();
+				 * 
+				 * } System.out.println(element +
+				 * " is moved right by pressing keys CTRL+Alt+ Right Arrow");
+				 * Thread.sleep(1000); // shortcut key to move box up for (int p = 0; p <= 5;
+				 * p++) {
+				 * 
+				 * action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.ALT)
+				 * .sendKeys(l.get(e), Keys.ARROW_UP).pause(Duration.ofSeconds(2)).build()
+				 * .perform();
+				 * 
+				 * } System.out.println(element +
+				 * " is moved up by pressing keys CTRL+Alt+ Up Arrow"); Thread.sleep(1000); //
+				 * shortcut key to move box down for (int p = 0; p <= 5; p++) {
+				 * 
+				 * action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.ALT)
+				 * .sendKeys(l.get(e), Keys.ARROW_DOWN).pause(Duration.ofSeconds(2)).build()
+				 * .perform();
+				 * 
+				 * } System.out.println(element +
+				 * " is moved down by pressing keys CTRL+Alt+ DOWN Arrow"); Thread.sleep(1000);
+				 * 
+				 * // shortcut key to shrink right side of box for (int p = 0; p <= 5; p++) {
+				 * 
+				 * action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.SHIFT)
+				 * .sendKeys(l.get(e), Keys.ARROW_LEFT).pause(Duration.ofSeconds(2)).build()
+				 * .perform();
+				 * 
+				 * } System.out.println(
+				 * "shortcut key (CTRL+SHIFT+ Left Arrow)is pressed to shrink right side of zoned  element "
+				 * + element); Thread.sleep(1000);
+				 * 
+				 * // shortcut key to expand right side of box for (int p = 0; p <= 5; p++) {
+				 * 
+				 * action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.SHIFT)
+				 * .sendKeys(l.get(e), Keys.ARROW_RIGHT).pause(Duration.ofSeconds(2)).build()
+				 * .perform();
+				 * 
+				 * } System.out.println(
+				 * "shortcut key (CTRL+SHIFT+ Right Arrow)is pressed to expand right side of zoned  element "
+				 * + element); Thread.sleep(1000); // shortcut key to shrink bottom side of box
+				 * for (int p = 0; p <= 5; p++) {
+				 * 
+				 * action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.SHIFT)
+				 * .sendKeys(l.get(e), Keys.ARROW_UP).pause(Duration.ofSeconds(2)).build()
+				 * .perform();
+				 * 
+				 * } System.out.println(
+				 * "shortcut key (CTRL+SHIFT+ UP Arrow)is pressed to shrink bottom side of zoned  element "
+				 * + element); Thread.sleep(1000);
+				 * 
+				 * // shortcut key to expand bottom side of box for (int p = 0; p <= 5; p++) {
+				 * 
+				 * action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.SHIFT)
+				 * .sendKeys(l.get(e), Keys.ARROW_DOWN).pause(Duration.ofSeconds(2)).build()
+				 * .perform();
+				 * 
+				 * } System.out.println(
+				 * "shortcut key (CTRL+SHIFT+ Down Arrow)is pressed to expand bottom side zoned  element "
+				 * + element); Thread.sleep(1000);
+				 * 
+				 * }
+				 * 
+				 * // delete if (e == 3) { String element = l.get(e).getText(); if
+				 * (element.equalsIgnoreCase("Figure") || (element.equalsIgnoreCase("Table")) ||
+				 * (element.equalsIgnoreCase("Formula"))) {
+				 * 
+				 * ((JavascriptExecutor) driver).executeScript("arguments[0].click();",
+				 * l.get(e)); Thread.sleep(1000);
+				 * 
+				 * action.sendKeys(Keys.DELETE).build().perform(); //
+				 * action.keyUp(Keys.DELETE).build().perform();
+				 * 
+				 * Alert alert = driver.switchTo().alert(); Thread.sleep(1000);
+				 * System.out.println("The alert message is :" + alert.getText());
+				 * Thread.sleep(1000); alert.accept();
+				 * 
+				 * if (l.get(e).isDisplayed()) { System.out.println("Selected zone for " +
+				 * element + " is not removed"); }
+				 * 
+				 * 
+				 * // Assert.assertNotNull("zone is not deleted", l.get(e));
+				 * 
+				 * } if (element.equalsIgnoreCase("P")) { // else { ((JavascriptExecutor)
+				 * driver).executeScript("arguments[0].click();", l.get(e));
+				 * action.sendKeys(Keys.DELETE).build().perform();
+				 * 
+				 * System.out.println(element + " is removed");
+				 * 
+				 * } }
+				 * 
+				 * // break; }
+				 * 
+				 */
 				try {
 					List<WebElement> l = driver.findElements(By.xpath("//div[@class='elementx']"));
 					// Actions action = new Actions(driver);
 					int no_of_elements = l.size();
 					System.out.println("Number of elements found on current page is  " + no_of_elements);
 					for (int e = 0; e < no_of_elements; e++) {
-						// String element = l.get(e).getText();
-						if (e == 3) {
-							//clone zone
-							String element = l.get(e).getText();
-							if (element.equalsIgnoreCase("Figure") || (element.equalsIgnoreCase("Table"))
-									|| (element.equalsIgnoreCase("Formula"))) {
+						if (e == 0) {
+							String ele1 = l.get(e).getText();
+							// action.keyDown(Keys.LEFT_CONTROL).pause(Duration.ofSeconds(2))
+							action.keyDown(Keys.LEFT_CONTROL).click(l.get(e)).pause(Duration.ofSeconds(2)).perform();
+							// .keyUp(Keys.LEFT_CONTROL).perform();
+							System.out.println("1st element selected to be merged is " + ele1);
+						}
 
-								((JavascriptExecutor) driver).executeScript("arguments[0].click();", l.get(e));
-								Thread.sleep(1000);
-								action.keyDown(Keys.CONTROL).sendKeys("B").perform();
-								action.keyUp(Keys.CONTROL);
-								Thread.sleep(2000);
+						for (int f = 0; f < no_of_elements; f++) {
 
-								Alert alert = driver.switchTo().alert();
+							if (f == 1) {
+								String ele2 = l.get(f).getText();
+								action.keyDown(Keys.LEFT_CONTROL).click(l.get(f)).pause(Duration.ofSeconds(2))
+										.perform();
+								// .keyUp(Keys.LEFT_CONTROL).perform();
 
-								System.out.println("The alert message is :" + alert.getText());
-								Thread.sleep(1000);
-								alert.accept();
-								
-
-							} else {
-								((JavascriptExecutor) driver).executeScript("arguments[0].click();", l.get(e));
-
-								action.keyDown(Keys.CONTROL).sendKeys("B").perform();
-								action.keyUp(Keys.CONTROL);
-								action.dragAndDropBy(l.get(e), 55, 10).build().perform();
-								System.out.println(element + " is cloned");
-								Thread.sleep(1000);
-
+								System.out.println("2nd element selected to be merged is " + ele2);
+								break;
 							}
 
 						}
-
-						if (e == 3) {
-							String element = l.get(e).getText();
-							((JavascriptExecutor) driver).executeScript("arguments[0].click();", l.get(e));
-							// shortcut key to move box left
-							for (int p = 0; p <= 5; p++) {
-
-								action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.ALT)
-										.sendKeys(l.get(e), Keys.ARROW_LEFT).pause(Duration.ofSeconds(2)).build()
-										.perform();
-
-							}
-							System.out.println(element + " is moved left by pressing keys CTRL+Alt+ Left Arrow");
-							Thread.sleep(1000);
-							// shortcut key to move box right
-							for (int p = 0; p <= 5; p++) {
-
-								action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.ALT)
-										.sendKeys(l.get(e), Keys.ARROW_RIGHT).pause(Duration.ofSeconds(2)).build()
-										.perform();
-
-							}
-							System.out.println(element + " is moved right by pressing keys CTRL+Alt+ Right Arrow");
-							Thread.sleep(1000);
-							// shortcut key to move box up
-							for (int p = 0; p <= 5; p++) {
-
-								action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.ALT)
-										.sendKeys(l.get(e), Keys.ARROW_UP).pause(Duration.ofSeconds(2)).build()
-										.perform();
-
-							}
-							System.out.println(element + " is moved up by pressing keys CTRL+Alt+ Up Arrow");
-							Thread.sleep(1000);
-							// shortcut key to move box down
-							for (int p = 0; p <= 5; p++) {
-
-								action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.ALT)
-										.sendKeys(l.get(e), Keys.ARROW_DOWN).pause(Duration.ofSeconds(2)).build()
-										.perform();
-
-							}
-							System.out.println(element + " is moved down by pressing keys CTRL+Alt+ DOWN Arrow");
-							Thread.sleep(1000);
-
-							// shortcut key to shrink right side of box
-							for (int p = 0; p <= 5; p++) {
-
-								action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.SHIFT)
-										.sendKeys(l.get(e), Keys.ARROW_LEFT).pause(Duration.ofSeconds(2)).build()
-										.perform();
-
-							}
-							System.out.println(
-									"shortcut key (CTRL+SHIFT+ Left Arrow)is pressed to shrink right side of zoned  element "
-											+ element);
-							Thread.sleep(1000);
-
-							// shortcut key to expand right side of box
-							for (int p = 0; p <= 5; p++) {
-
-								action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.SHIFT)
-										.sendKeys(l.get(e), Keys.ARROW_RIGHT).pause(Duration.ofSeconds(2)).build()
-										.perform();
-
-							}
-							System.out.println(
-									"shortcut key (CTRL+SHIFT+ Right Arrow)is pressed to expand right side of zoned  element "
-											+ element);
-							Thread.sleep(1000);
-							// shortcut key to shrink bottom side of box
-							for (int p = 0; p <= 5; p++) {
-
-								action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.SHIFT)
-										.sendKeys(l.get(e), Keys.ARROW_UP).pause(Duration.ofSeconds(2)).build()
-										.perform();
-
-							}
-							System.out.println(
-									"shortcut key (CTRL+SHIFT+ UP Arrow)is pressed to shrink bottom side of zoned  element "
-											+ element);
-							Thread.sleep(1000);
-
-							// shortcut key to expand bottom side of box
-							for (int p = 0; p <= 5; p++) {
-
-								action.keyDown(l.get(e), Keys.CONTROL).keyDown(l.get(e), Keys.SHIFT)
-										.sendKeys(l.get(e), Keys.ARROW_DOWN).pause(Duration.ofSeconds(2)).build()
-										.perform();
-
-							}
-							System.out.println(
-									"shortcut key (CTRL+SHIFT+ Down Arrow)is pressed to expand bottom side zoned  element "
-											+ element);
-							Thread.sleep(1000);
-
-						}
-
-						// delete
-						if (e == 3) {
-							String element = l.get(e).getText();
-							if (element.equalsIgnoreCase("Figure") || (element.equalsIgnoreCase("Table"))
-									|| (element.equalsIgnoreCase("Formula"))) {
-
-								((JavascriptExecutor) driver).executeScript("arguments[0].click();", l.get(e));
-								Thread.sleep(1000);
-
-								action.sendKeys(Keys.DELETE).build().perform();
-								// action.keyUp(Keys.DELETE).build().perform();
-
-								Alert alert = driver.switchTo().alert();
-								Thread.sleep(1000);
-								System.out.println("The alert message is :" + alert.getText());
-								Thread.sleep(1000);
-								alert.accept();
-								/*
-								 * if (l.get(e).isDisplayed()) { System.out.println("Selected zone for " +
-								 * element + " is not removed"); }
-								 */
-
-								// Assert.assertNotNull("zone is not deleted", l.get(e));
-
-							}
-							if (element.equalsIgnoreCase("P")) {
-								// else {
-								((JavascriptExecutor) driver).executeScript("arguments[0].click();", l.get(e));
-								action.sendKeys(Keys.DELETE).build().perform();
-
-								System.out.println(element + " is removed");
-
-							}
-						}
-
-						// break;
+						break;
 					}
+					action.keyDown(Keys.CONTROL).sendKeys("M").pause(Duration.ofSeconds(2)).keyUp(Keys.CONTROL)
+							.perform();
+					System.out.println("both elements are merged");
 
 				}
 

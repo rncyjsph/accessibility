@@ -40,52 +40,72 @@ public class SourceImageViewerPage extends BaseClass {
 		PageFactory.initElements(driver, this);
 	}
 
+	
 	public void clickinspect() throws InterruptedException {
-		Actions action = new Actions(driver);
+		//Actions action = new Actions(driver);
 
-		action.moveToElement(inspect).build().perform();
-		Thread.sleep(2000);
-		((JavascriptExecutor) driver).executeScript("arguments[0].click();", inspect);
-
+		//action.moveToElement(inspect).build().perform();
+		//Thread.sleep(1000);
+		//((JavascriptExecutor) driver).executeScript("arguments[0].click();", inspect);
+try {
 		int no_of_elements = l.size();
-		System.out.println("Number of elements found on current page is  " + no_of_elements);
-		for (int e = 0; e < no_of_elements; e++) {
+		
+		System.out.println("Number of elements found on current page is  " +  no_of_elements);
+		
+		
+
+		for (int e = 0; e < no_of_elements; e++) 
+		{
 			String element = l.get(e).getText();
-			if (element.equalsIgnoreCase("Figure")) {
+			if(l.isEmpty() && no_of_elements == 0 && element.length() == 0)
+			{
+				break;
+			}	
+			
+		
+			
+		else if (element.equalsIgnoreCase("Figure")) 
+			 {
+int fi=0;
+				//figure.click();
+				 fi=fi+1;
+				 System.out.println("Total number of figures predicted " + fi);
+				
 
-				figure.click();
-
-				String tagname = tag.getText();
-				System.out.println("The element predicted is with tagname :" + tagname);
-				Select select = new Select(selectfield);
-				List<WebElement> selvalues = select.getOptions();
-				int selectsize = selvalues.size();
-				System.out.println(" Number of options present in Change Element Field :" + selectsize);
-				for (int s = selectsize-1; s > 0; s--) {
-					String sValue = selvalues.get(s).getText();
-					System.out.println("The options are " + sValue);
-					select.selectByVisibleText(sValue);
-					Thread.sleep(1000);
-					String newelement1 = l.get(e).getText();
-					if(sValue.equalsIgnoreCase(newelement1))
-							{
-					System.out.println("Element is changed to :" + newelement1);
-							}
+				//String tagname = tag.getText();
+				//System.out.println("The element predicted is with tagname :" + tagname);
+				//Select select = new Select(selectfield);
+				//List<WebElement> selvalues = select.getOptions();
+				//int selectsize = selvalues.size();
+				//System.out.println(" Number of options present in Change Element Field :" + selectsize);
+				//for (int s = selectsize-1; s > 0; s--) {
+					//String sValue = selvalues.get(s).getText();
+					//System.out.println("The options are " + sValue);
+					//select.selectByVisibleText(sValue);
+					//Thread.sleep(1000);
+					//String newelement1 = l.get(e).getText();
+					//if(sValue.equalsIgnoreCase(newelement1))
+						//	{
+					//System.out.println("Element is changed to :" + newelement1);
+					//		}
 					
 					//Assert.assertEquals(sValue, element);
 					//System.out.println("The selected element is changed to " + sValue);
 
 				}
 				
-
-			}
+			
+		//	}
 
 			else if (element.equalsIgnoreCase("Table")) {
 
-				table.click();
-				String tagname = tag.getText();
-				System.out.println("The element predicted is with tagname :" + tagname);
-				Select select = new Select(selectfield);
+				//table.click();
+				int t=0;
+				t=t+1;
+				 System.out.println("Total number of tables predicted " + t);
+				//String tagname = tag.getText();
+				//System.out.println("The element predicted is with tagname :" + tagname);
+				/*Select select = new Select(selectfield);
 				List<WebElement> selvalues = select.getOptions();
 				int selectsize = selvalues.size();
 				for (int s = 0; s < selectsize; s++) {
@@ -95,17 +115,20 @@ public class SourceImageViewerPage extends BaseClass {
 					Thread.sleep(1000);
 					String newelement1 = l.get(e).getText();
 					System.out.println("the selected element is changed to " + newelement1);
-					Assert.assertEquals(sValue, newelement1);
+					Assert.assertEquals(sValue, newelement1);*/
 
 				}
-			}
+			
 
 			else if (element.equalsIgnoreCase("Formula")) {
 
-				formula.click();
-				String tagname = tag.getText();
-				System.out.println("The element predicted is with tagname :" + tagname);
-				Select select = new Select(selectfield);
+			//	formula.click();
+				int fo=0;
+				fo=fo+1;
+				System.out.println("Total number of formulas predicted " + fo);
+				//String tagname = tag.getText();
+				//System.out.println("The element predicted is with tagname :" + tagname);
+				/*Select select = new Select(selectfield);
 				List<WebElement> selvalues = select.getOptions();
 				int selectsize = selvalues.size();
 				for (int s = 0; s < selectsize; s++) {
@@ -115,14 +138,33 @@ public class SourceImageViewerPage extends BaseClass {
 					Thread.sleep(1000);
 					String newelement1 = l.get(e).getText();
 					System.out.println("the selected element is changed to " + newelement1);
-					Assert.assertEquals(sValue, newelement1);
+					Assert.assertEquals(sValue, newelement1);*/
 
 				}
+			
+			
 			}
-			Thread.sleep(1000);
+			
 
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", closeinspect);
+			
 
-		}
-	}
+		
+		
+		// Thread.sleep(1000);
+		 
+		// ((JavascriptExecutor) driver).executeScript("arguments[0].click();", closeinspect);
+	
+		 
+		
+		 
 }
+
+catch(org.openqa.selenium.StaleElementReferenceException se)
+{
+	
+}
+
+}
+}
+
+

@@ -21,7 +21,7 @@ public class Alt {
 
 		System.setProperty("webdriver.chrome.driver", "D:\\chromedriver_win32\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
-		driver.get("https://staging.codemantra.com/login");
+		driver.get("https://accessibilityptuat.codemantra.com/login");
 		driver.manage().window().maximize();
 		driver.findElement(By.id("user001")).sendKeys("rincy@codemantra.in");
 		driver.findElement(By.id("pas001")).sendKeys("Test#123");
@@ -34,7 +34,7 @@ public class Alt {
 		WebElement wb = driver.findElement(By.xpath("//input[@id='search']"));
 		Thread.sleep(5000);
 		wb.sendKeys(" ");
-		wb.sendKeys("chennai1993");
+		wb.sendKeys("MathProject");
 		Thread.sleep(3000);
 
 		WebElement c = driver.findElement(By.xpath("//input[@id='search_submit']"));
@@ -79,97 +79,94 @@ public class Alt {
 				// wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//li[@id='gotoAltTxt']")));
 				// // action.moveToElement(alttext).perform();
 
-				//Thread.sleep(5000);
-				WebElement img=driver.findElement(By.xpath("//span[@id='imgName']"));
-				String imagetxt=img.getText();
-				System.out.println("The displayed image's name : " + imagetxt);
-				
-				
-				int imglen=imagetxt.length();
-				
-				String[] at=imagetxt.split("/");
-				String part1=at[0];
-				String part2=at[1];
-				//System.out.println("first part is " +part1);
-				//System.out.println("second part is " +part2);
-				int part2len=part2.length();
-				//System.out.println(part2len);
-				String reqc=part2.substring(0, part2len-1);
-				System.out.println("Figure count is " +reqc);
-				int reqcount=Integer.parseInt(reqc);
-				
-				
-				
+				// Thread.sleep(5000);
+				WebElement img = driver.findElement(By.xpath("//span[@id='imgName']"));
+				String imagetxt = img.getText();
+				// System.out.println("The displayed image's name : " + imagetxt);
+
+				int imglen = imagetxt.length();
+
+				String[] at = imagetxt.split("/");
+				String part1 = at[0];
+				String part2 = at[1];
+				// System.out.println("first part is " +part1);
+				// System.out.println("second part is " +part2);
+				int part2len = part2.length();
+				// System.out.println(part2len);
+				String reqc = part2.substring(0, part2len - 1);
+				System.out.println("Image count is " + reqc);
+				int reqcount = Integer.parseInt(reqc);
+
 				WebElement fwd = driver.findElement(By.xpath("//button[@class='next']"));
 
 				WebElement prev = driver.findElement(By.xpath("//button[@class='previous']"));
-				for (int count=1;count<=reqcount;count++)
-				{
-					//if (fwd !=null)
-					//{
-						driver.findElement(By.xpath("//textarea[@id='taLong02']")).sendKeys(" ");
-						driver.findElement(By.xpath("//textarea[@id='taLong02']")).clear();
-						Thread.sleep(2000);
-						driver.findElement(By.xpath("//textarea[@id='taLong02']")).sendKeys("dummy text");
-
-						Thread.sleep(2000);
-						((JavascriptExecutor) driver).executeScript("arguments[0].click();", fwd);
-						
-						System.out.println("next clicked");
-						driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-						Thread.sleep(1000);
-
-					//}
+				for (int count = 1; count <= reqcount; count++) {
 					
-					if ((count == 12) && (prev.isEnabled()))
-					{
+					int form = 0;
+					WebElement alttextbox = driver.findElement(By.xpath("//textarea[@id='taLong02']"));
+					String val = alttextbox.getAttribute("class");
+					
+					if (!val.contains("not")) {
+						driver.findElement(By.xpath("//textarea[@id='taLong02']")).clear();
+						driver.findElement(By.xpath("//textarea[@id='taLong02']")).sendKeys("dummy text");
+					} 
+					else {
+						form = form + 1;
+					}
+					
+					System.out.println(form);
+					//driver.findElement(By.xpath("//textarea[@id='taLong02']")).sendKeys(" ");
+					//driver.findElement(By.xpath("//textarea[@id='taLong02']")).clear();
+					Thread.sleep(2000);
+					//driver.findElement(By.xpath("//textarea[@id='taLong02']")).sendKeys("dummy text");
+					Thread.sleep(2000);
+					((JavascriptExecutor) driver).executeScript("arguments[0].click();", fwd);
+
+					System.out.println("next clicked");
+					driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+					Thread.sleep(1000);
+
+					if ((count == 4) && (prev.isEnabled())) {
 
 						((JavascriptExecutor) driver).executeScript("arguments[0].click();", prev);
-						
+
 						System.out.println("prev clicked");
-						
-					}
-					
+						System.out.println(form);
 
-						
+					}
+
 				}
-								
-				
 
-				/*WebElement fwd = driver.findElement(By.xpath("//button[@class='next']"));
-
-				WebElement prev = driver.findElement(By.xpath("//button[@class='previous']"));
-				int count = 1;
-				// while ((prev != null) && (prev.isDisplayed())) {
-				while ((fwd != null) && (fwd.isDisplayed()))  {
-					if ((fwd.isEnabled() && (count <12))) {
-
-						Thread.sleep(2000);
-
-						driver.findElement(By.xpath("//textarea[@id='taLong02']")).sendKeys(" ");
-						driver.findElement(By.xpath("//textarea[@id='taLong02']")).clear();
-						Thread.sleep(2000);
-						driver.findElement(By.xpath("//textarea[@id='taLong02']")).sendKeys("dummy text");
-
-						Thread.sleep(2000);
-						((JavascriptExecutor) driver).executeScript("arguments[0].click();", fwd);
-						// fwd.get(0).click();
-						System.out.println("next clicked");
-						driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-						Thread.sleep(2000);
-						count++;
-
-					}
-					if ((count == 12) && (prev.isEnabled())){
-
-						((JavascriptExecutor) driver).executeScript("arguments[0].click();", prev);
-						count++;
-						System.out.println("prev clicked"  +count);
-						
-					}
-					}
-					
-*/					/*
+				/*
+				 * WebElement fwd = driver.findElement(By.xpath("//button[@class='next']"));
+				 * 
+				 * WebElement prev =
+				 * driver.findElement(By.xpath("//button[@class='previous']")); int count = 1;
+				 * // while ((prev != null) && (prev.isDisplayed())) { while ((fwd != null) &&
+				 * (fwd.isDisplayed())) { if ((fwd.isEnabled() && (count <12))) {
+				 * 
+				 * Thread.sleep(2000);
+				 * 
+				 * driver.findElement(By.xpath("//textarea[@id='taLong02']")).sendKeys(" ");
+				 * driver.findElement(By.xpath("//textarea[@id='taLong02']")).clear();
+				 * Thread.sleep(2000);
+				 * driver.findElement(By.xpath("//textarea[@id='taLong02']")).
+				 * sendKeys("dummy text");
+				 * 
+				 * Thread.sleep(2000); ((JavascriptExecutor)
+				 * driver).executeScript("arguments[0].click();", fwd); // fwd.get(0).click();
+				 * System.out.println("next clicked");
+				 * driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+				 * Thread.sleep(2000); count++;
+				 * 
+				 * } if ((count == 12) && (prev.isEnabled())){
+				 * 
+				 * ((JavascriptExecutor) driver).executeScript("arguments[0].click();", prev);
+				 * count++; System.out.println("prev clicked" +count);
+				 * 
+				 * } }
+				 * 
+				 */ /*
 					 * if ((prev.isEnabled())) { wait.until(ExpectedConditions.visibilityOf(prev));
 					 * Thread.sleep(2000); prev.sendKeys(""); ((JavascriptExecutor)
 					 * driver).executeScript("arguments[0].click();", prev);
@@ -177,8 +174,7 @@ public class Alt {
 					 * driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
 					 * Thread.sleep(5000); }
 					 */
-					// break;
-				
+				// break;
 
 				/*
 				 * if ((prev.get(0).isEnabled())) {

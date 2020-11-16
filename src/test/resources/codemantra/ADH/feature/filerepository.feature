@@ -43,11 +43,26 @@ Examples:
 @AddFilesOnSearchProject
 Scenario Outline: File upload in existing project
 When user search for required "<project>"
-Then user uploads files and verifies the file count in source folder
-And user validates the generated view file and generated notification 
+Then user upload file
+And user validates and downloads the generated view file and log file 
+Then user deletes the files in all folders
 
 Examples:
 | project |
-#| Chennai1993 |
-| AutoScript |
+| MathProject |
+#| AutoScript  |
+#| MathML_Desc |
+
+
+@MultipleFileUpload
+Scenario Outline: Multiple File upload in existing project
+Then user searches for the required "<project>"
+And uploads multiple file to the selected project
+
+
+Examples:
+| project |
+| Multipleupload_simple |
+#| AutoScript |
+
 

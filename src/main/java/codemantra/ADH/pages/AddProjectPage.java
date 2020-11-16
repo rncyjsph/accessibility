@@ -18,7 +18,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import codemantra.ADH.TestBase.BaseClass;
-
+import codemantra.ADH.util.TestUtil;
 import junit.framework.Assert;
 
 public class AddProjectPage extends BaseClass {
@@ -148,8 +148,8 @@ public class AddProjectPage extends BaseClass {
 
 	public void scrollup() throws InterruptedException {
 		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		driver.manage().timeouts().pageLoadTimeout(900, TimeUnit.SECONDS);
-		Thread.sleep(2000);
+		//driver.manage().timeouts().pageLoadTimeout(TestUtil.PageLoadTimeOut, TimeUnit.SECONDS);
+		//Thread.sleep(2000);
 		Actions actions = new Actions(driver);
 		actions.keyDown(Keys.CONTROL).sendKeys(Keys.HOME).build().perform();
 
@@ -157,8 +157,8 @@ public class AddProjectPage extends BaseClass {
 
 	public void scrolldown() throws InterruptedException {
 		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		driver.manage().timeouts().pageLoadTimeout(900, TimeUnit.SECONDS);
-		Thread.sleep(2000);
+		//driver.manage().timeouts().pageLoadTimeout(TestUtil.PageLoadTimeOut, TimeUnit.SECONDS);
+		//Thread.sleep(2000);
 		Actions actions = new Actions(driver);
 		actions.keyDown(Keys.CONTROL).sendKeys(Keys.END).build().perform();
 

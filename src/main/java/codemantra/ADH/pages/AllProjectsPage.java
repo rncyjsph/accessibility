@@ -142,6 +142,7 @@ public class AllProjectsPage extends BaseClass{
 			 wait.until(ExpectedConditions.visibilityOf(searchbtn));         
 					
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", searchbtn);
+			
 			Thread.sleep(2000);
 
 			WebDriverWait tablewait = new WebDriverWait(driver, 20000);
@@ -184,11 +185,16 @@ public class AllProjectsPage extends BaseClass{
 			 wait.until(ExpectedConditions.visibilityOf(searchbtn));         
 					
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", searchbtn);
-			Thread.sleep(2000);
-try {
-			WebDriverWait tablewait = new WebDriverWait(driver, 20000);
+			//Thread.sleep(2000);
+
+			WebDriverWait tablewait = new WebDriverWait(driver, 2000);
+			try {
 			tablewait.until(ExpectedConditions.visibilityOfAllElements(rowvalue));
-//Thread.sleep(2000);
+			}catch(org.openqa.selenium.StaleElementReferenceException r)
+			{
+				
+			}
+Thread.sleep(1000);
 
 			int row=rows.size();
 			
@@ -198,19 +204,28 @@ try {
 				{
 					flag=true;
 					//tablewait.until(ExpectedConditions.elementToBeClickable(rowvalue.get(i)));
-					tablewait.until(ExpectedConditions.visibilityOf(rowvalue.get(i)));
+					//WebDriverWait table = new WebDriverWait(driver, 1000);
+					//table.until(ExpectedConditions.visibilityOf(rowvalue.get(i)));
+			
 					Actions action=new Actions(driver);
 					action.moveToElement(rowvalue.get(i)).perform();
 					Thread.sleep(1000);
+					try {
+						tablewait.until(ExpectedConditions.elementToBeClickable(rowvalue.get(i)));
 					((JavascriptExecutor) driver).executeScript("arguments[0].click();", rowvalue.get(i));
+					}
+					catch(org.openqa.selenium.StaleElementReferenceException e)
+					{
+						
+					}
 					break;
 				}
 			}
-}
-catch(org.openqa.selenium.StaleElementReferenceException e)
-{
-	System.out.println("Element is not attached to the page document");
-}
+//}
+//catch(org.openqa.selenium.StaleElementReferenceException e)
+//{
+	//System.out.println("Element is not attached to the page document");
+//}
 
 
 			return new FileRepoPage();
@@ -224,15 +239,16 @@ catch(org.openqa.selenium.StaleElementReferenceException e)
 			
 			WebDriverWait wait=new WebDriverWait(driver,2000);
 			wait.until(ExpectedConditions.visibilityOf(logout));
-			Thread.sleep(10000);
+			//Thread.sleep(10000);
 			
 			Actions action=new Actions(driver);
 			action.moveToElement(logout);
 			Thread.sleep(1000);
 			
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", logout);
-			Thread.sleep(2000);
-			driver.quit();
+			//Thread.sleep(2000);
+			//driver.quit();
+			BaseClass.bquit();
 
 		}
 		
