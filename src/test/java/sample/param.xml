@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Testing yahoo App">
+    <test name="Parameter test">
+    <parameter name="bowser" value ="chrome"/>
+    <parameter name="url" value="https://login.yahoo.com/"/>
+    <parameter name="emailid" value="rncy_jsph@yahoo.co.in"/>
+    
+         <classes>
+             <class name="sample.ParametersTest"/>
+             
+          </classes>
+     </test> <!-- Test -->
+</suite> <!-- Suite -->

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Testing yahoo App]">
+  <test thread-count="5" name="Parameter test(failed)">
+    <parameter name="emailid" value="rncy_jsph@yahoo.co.in"/>
+    <parameter name="url" value="https://login.yahoo.com/"/>
+    <classes>
+      <class name="sample.ParametersTest">
+        <methods>
+          <include name="yahoologinTest" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- sample.ParametersTest -->
+    </classes>
+  </test> <!-- Parameter test(failed) -->
+</suite> <!-- Failed suite [Testing yahoo App] -->

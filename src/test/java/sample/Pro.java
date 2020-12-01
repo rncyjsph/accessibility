@@ -24,6 +24,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import codemantra.ADH.TestBase.BaseClass;
 import codemantra.ADH.util.TestUtil;
 import codemantra.ADH.util.Zoom;
+import junit.framework.Assert;
 
 public class Pro extends BaseClass {
 
@@ -44,7 +45,7 @@ public class Pro extends BaseClass {
 		WebElement wb = driver.findElement(By.xpath("//input[@id='search']"));
 		Thread.sleep(5000);
 		wb.sendKeys(" ");
-		wb.sendKeys("AutoScript");
+		wb.sendKeys("MathProject");
 		Thread.sleep(3000);
 
 		WebElement c = driver.findElement(By.xpath("//input[@id='search_submit']"));
@@ -60,7 +61,7 @@ public class Pro extends BaseClass {
 		WebDriverWait wait = new WebDriverWait(driver, 20000);
 		WebElement process = driver.findElement(By.xpath("//span[@class='ng-scope'][contains(text(),'Process')]"));
 		wait.until(ExpectedConditions.elementToBeClickable(process));
-		Thread.sleep(20000);
+		Thread.sleep(15000);
 		process.click();
 		Thread.sleep(5000);
 		WebElement viewfilebtn = driver.findElement(
@@ -85,6 +86,61 @@ public class Pro extends BaseClass {
 				Thread.sleep(5000);
 				JavascriptExecutor executor = (JavascriptExecutor) driver;
 				executor.executeScript("document.body.style.zoom = '90%'");
+				
+				Thread.sleep(2000);
+				
+				WebElement bkbtn = driver.findElement(By.xpath("//button[@id='bmarkbtn']"));
+
+				action.moveToElement(bkbtn).build().perform();
+
+				wait.until(ExpectedConditions.elementToBeClickable(bkbtn));
+				Thread.sleep(2000);
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", bkbtn);
+				// bkbtn.click();
+				Thread.sleep(2000);
+
+				WebElement bookmark = driver
+						.findElement(By.xpath("//div[@class='container2']//div[@class='form-group']"));
+				wait.until(ExpectedConditions.visibilityOf(bookmark));
+
+				// action.dragAndDropBy(bookmark, 15, 120).build().perform();
+
+				Thread.sleep(2000);
+				
+
+				List<WebElement> txt = driver.findElements(By.xpath("//div[@class='ro']//input"));
+				if (!txt.isEmpty())
+				{
+				int numebroftxtbox = txt.size();
+				System.out.println("Number of bookmarks present :" + numebroftxtbox);
+				for (int k = 0; k < numebroftxtbox; k++) {
+					String textboxvalue = txt.get(k).getAttribute("value");
+					System.out.println(textboxvalue);
+					if (!textboxvalue.isEmpty())
+
+					{
+						Assert.assertTrue(true);
+					}
+					else
+					{
+						WebElement bookmarkclose = driver.findElement(By.xpath("//div[@id='closeBM']"));
+						((JavascriptExecutor) driver).executeScript("arguments[0].click();", bookmarkclose);
+					}
+
+				}
+				}
+
+				Thread.sleep(2000);
+				WebElement savebookmark = driver.findElement(By.xpath("//button[@id='saveBM']"));
+				// action.moveToElement(savebookmark).perform();
+				wait.until(ExpectedConditions.visibilityOf(savebookmark));
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", savebookmark);
+
+				Thread.sleep(1000);
+				WebElement bookmarkclose = driver.findElement(By.xpath("//div[@id='closeBM']"));
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", bookmarkclose);
+
+				
 				// driver.manage().timeouts().pageLoadTimeout(TestUtil.PageLoadTimeOut,
 				// TimeUnit.SECONDS);
 				// JavascriptExecutor executor = (JavascriptExecutor)driver;
@@ -92,7 +148,7 @@ public class Pro extends BaseClass {
 
 				// List<WebElement> process_next
 				// =wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//button[@id='nxt']")));
-				for (int i = 0; i <= 5; i++) {
+				/*for (int i = 0; i <= 5; i++) {
 					WebDriverWait m = new WebDriverWait(driver, 60);
 					WebElement process_next = wait
 							.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='nxt']")));
@@ -119,7 +175,7 @@ public class Pro extends BaseClass {
 					}
 					driver.manage().timeouts().pageLoadTimeout(500, TimeUnit.SECONDS);
 				}
-
+*/
 				// if (!process_next.isEnabled()) {
 				/*
 				 * Thread.sleep(5000); WebElement savebtn =
@@ -288,7 +344,7 @@ public class Pro extends BaseClass {
 				 * // break; }
 				 * 
 				 */
-				try {
+				/*try {
 					List<WebElement> l = driver.findElements(By.xpath("//div[@class='elementx']"));
 					// Actions action = new Actions(driver);
 					int no_of_elements = l.size();
@@ -330,7 +386,7 @@ public class Pro extends BaseClass {
 			}
 
 		}
-
+*/
 		/*
 		 * try {
 		 * action.keyDown(Keys.CONTROL).click(l.get(4)).click(l.get(5)).keyUp(Keys.
@@ -343,7 +399,7 @@ public class Pro extends BaseClass {
 		 * 
 		 * }
 		 */
-		Thread.sleep(8000);
+		//Thread.sleep(8000);
 		// driver.quit();
 
 		/*
@@ -376,5 +432,7 @@ public class Pro extends BaseClass {
 		 * 
 		 */
 
+	}
+}
 	}
 }

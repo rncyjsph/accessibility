@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Testing Google Apps]">
+  <test thread-count="5" name="Regression(failed)">
+    <classes>
+      <class name="examplepackage.HalEbayDayTest">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setup"/>
+          <include name="halfEbayRegTest"/>
+        </methods>
+      </class> <!-- examplepackage.HalEbayDayTest -->
+    </classes>
+  </test> <!-- Regression(failed) -->
+</suite> <!-- Failed suite [Testing Google Apps] -->

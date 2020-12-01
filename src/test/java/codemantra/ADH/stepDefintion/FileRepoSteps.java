@@ -654,6 +654,8 @@ public class FileRepoSteps extends BaseClass {
 						Thread.sleep(2000);
 
 						List<WebElement> txt = driver.findElements(By.xpath("//div[@class='ro']//input"));
+						if (!txt.isEmpty())
+						{
 						int numebroftxtbox = txt.size();
 						System.out.println("Number of bookmarks present :" + numebroftxtbox);
 						for (int k = 0; k < numebroftxtbox; k++) {
@@ -664,7 +666,13 @@ public class FileRepoSteps extends BaseClass {
 							{
 								Assert.assertTrue(true);
 							}
+							else
+							{
+								txt.get(k).sendKeys("Bookmark content entered by the user");
+								
+							}
 
+						}
 						}
 
 						Thread.sleep(2000);
